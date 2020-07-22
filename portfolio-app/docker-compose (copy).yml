@@ -1,0 +1,48 @@
+#a mettre a la racine commune de tout les projets
+version: "3"
+services:
+  api-sentiment:
+    build: ./api-sentimentAnalysis
+    expose:
+    - "3000"
+    networks:
+    - portfolio-network
+    container_name: api-sentiment
+
+  tfserv-sentiment:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=sentimentAnalysis
+    ports:
+    - "8500:8500"
+    - "8501:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-sentiment
+    volumes:
+    - /home/flo/portfolio/api-sentimentAnalysis/sentimentanalysis/model:/models/sentimentAnalysis
+    
+  tfserv-line-counting:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=lineCounting
+    ports:
+    - "8400:8500"
+    - "8401:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-line-counting
+    volumes:
+    - /home/flo/portfolio/api-img2txt/lineCounting/model:/models/lineCounting
+    
+  front:
+    build: ./portfolio-app
+    ports: 
+    - "4200:80"
+    networks: 
+    - portfolio-network
+    container_name: front
+
+
+networks:
+  portfolio-network:

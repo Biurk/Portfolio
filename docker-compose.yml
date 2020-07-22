@@ -1,0 +1,94 @@
+#a mettre a la racine commune de tout les projets
+version: "3"
+services:
+#####################################################
+###################APIs##############################
+#####################################################
+  api-sentiment:
+    build: ./api-sentimentAnalysis
+    expose:
+    - "3000"
+    networks:
+    - portfolio-network
+    container_name: api-sentiment
+    
+  api-img2txt:
+    build: ./api-img2txt
+    expose:
+    - "4000"
+    networks:
+    - portfolio-network
+    container_name: api-img2txt
+#####################################################
+###################Models############################
+#####################################################
+
+  tfserv-sentiment:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=sentimentAnalysis
+    ports:
+    - "8500:8500"
+    - "8501:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-sentiment
+    volumes:
+    - /home/flo/portfolio/api-sentimentAnalysis/sentimentanalysis/model:/models/sentimentAnalysis
+    
+  tfserv-line-counting:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=lineCounting
+    ports:
+    - "8400:8500"
+    - "8401:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-line-counting
+    volumes:
+    - /home/flo/portfolio/api-img2txt/models/lineCounting:/models/lineCounting
+    
+  tfserv-word-seg:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=charSeg
+    ports:
+    - "8300:8500"
+    - "8301:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-charSeg
+    volumes:
+    - /home/flo/portfolio/api-img2txt/models/charSeg:/models/charSeg
+    
+  tfserv-word-pred:
+    image: tensorflow/serving
+    environment:
+    - MODEL_NAME=charPred
+    ports:
+    - "8200:8500"
+    - "8201:8501"
+    networks:
+    - portfolio-network
+    container_name: tfserv-charPred
+    volumes:
+    - /home/flo/portfolio/api-img2txt/models/charPred:/models/charPred
+#####################################################
+###################Front#############################
+#####################################################
+    
+  front:
+    build: ./portfolio-app
+    ports: 
+    - "4200:80"
+    networks: 
+    - portfolio-network
+    container_name: front
+    depends_on:
+      - "api-img2txt"
+      - "api-sentiment"
+
+
+networks:
+  portfolio-network:

@@ -1,0 +1,124 @@
+<mat-accordion>
+    <mat-expansion-panel class="expPanel">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Données personnelles
+            </mat-panel-title>
+            <mat-panel-description>
+                Florent Dravet
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 lol">
+                    <img class=photo
+                         src="assets/me.jpg"
+                         alt="image" />
+                </div>
+                <div class="col-sm-4">
+                    <p>Florent Dravet</p>
+                    <p>Né le 20 mai 1990</p>
+                    <p>Permis B + véhicule</p>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">
+                    <p>florent.dravet@gmail.com</p>
+                    <p>06 32 35 51 79</p>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Formations/Diplômes
+            </mat-panel-title>
+            <mat-panel-description>
+                Master Mathématiques
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-my-table [headers]="diplomaColumns"
+                      [datas]="diplomaData"></app-my-table>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Experiences professionnelles
+            </mat-panel-title>
+            <mat-panel-description>
+                Ingénieur Logiciel 2 ans
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-my-table [headers]="expColumns"
+                      [datas]="expData"></app-my-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Certifications
+            </mat-panel-title>
+            <mat-panel-description>
+                <a class=link
+                   (click)="goToLink('https://www.youracclaim.com/users/florent-dravet.a062752b')">Cursus IBM machine learning / deep
+                    learning</a>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-my-table [headers]="certifColumns"
+                      [datas]="certifData"></app-my-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Compétences
+            </mat-panel-title>
+            <mat-panel-description>
+                Maths/Programmation/Tensorflow/Docker/Unity
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-my-table [headers]="skillColumns"
+                      [datas]="skillData"></app-my-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Ouvrages étudiés
+            </mat-panel-title>
+            <mat-panel-description>
+                Deep Learning with Python - Francois Chollet
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-my-table [headers]="bookColumns"
+                      [datas]="bookData"></app-my-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="expPanel"
+                         (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                Description personnelle
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{text1}}</p>
+        <p>{{text2}}</p>
+        <p>{{text3}}</p>
+        <p>{{text4}}</p>
+    </mat-expansion-panel>
+</mat-accordion>

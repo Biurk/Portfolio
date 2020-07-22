@@ -1,0 +1,40 @@
+.expPanel{
+    margin-top: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.photo{
+  max-width: -moz-available;
+  max-width: -webkit-fill-available;
+  // max-width: -moz-available;
+  // object-fit: cover;
+  // width:100%;
+  // height:-webkit-fill-available;
+  // height:-moz-available;
+  // width: fill;
+}
+
+.mat-expansion-panel-header-description {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-panel-title{
+  font-family: brandon-grotesque, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.link{
+  color: blue; 
+  text-decoration: underline;
+  // overflow: hidden;
+  // background-size: cover;
+  // background-position: center;
+  // background-image: url(../../assets/me.jpg);
+  cursor: pointer;
+}
+
+.lol{
+  // height: 20em;
+}
