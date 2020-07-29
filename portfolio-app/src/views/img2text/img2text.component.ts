@@ -10,7 +10,7 @@ export class Img2textComponent implements OnInit {
   files: File[] = [];
   f: File;
   code: string;
-  isLoading: boolean;
+  isLoading = true;
 
   constructor(private img2txtService: Img2textService) { }
 
@@ -28,6 +28,7 @@ export class Img2textComponent implements OnInit {
       this.f = this.files[this.files.length - 1];
       console.log(this.f);
       console.log(this.files);
+      this.isLoading = true;
       this.sendAs64(this.f);
     }
 
@@ -49,6 +50,7 @@ export class Img2textComponent implements OnInit {
       this.img2txtService.getTextFromImage(s64).subscribe((txt: string) => {
         // console.log(txt);
         this.code = txt;
+        this.isLoading = false;
       });
     };
     reader.onerror = (error) => {

@@ -16,7 +16,9 @@
         </ngx-dropzone-image-preview>
       </ngx-dropzone>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 spinner">
+      <mat-spinner *ngIf=isLoading
+                   [diameter]='80'></mat-spinner>
     </div>
     <div class="col-md-5">
       <mat-card class="result">

@@ -15,6 +15,7 @@ export class SentimentAnalysisService {
   public getScoreFromText(text: string): Observable<SentimentResponse> {
 
     console.log(environment.sentimentAnalysisUrl);
+    console.log('ca marche');
     return this.http.post<SentimentResponse>(environment.sentimentAnalysisUrl + '/sentiment/', { phrase: text });
   }
 }

@@ -55,6 +55,7 @@ app.post('/img2txt', (req, res) => {
             res.send(JSON.stringify(data.toString()))
         })
         process.stderr.on('data', (data) => {
+            console.log('ERROR')
             console.log(data.toString());
         })
     });

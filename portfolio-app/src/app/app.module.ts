@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MyTableComponent } from 'src/components/my-table/my-table.component';
 import { SourcesComponent } from 'src/views/sources/sources.component';
 import { PortfolioComponent } from 'src/views/portfolio/portfolio.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PortfolioComponent } from 'src/views/portfolio/portfolio.component';
     MatToolbarModule,
     MatCardModule,
     MatTooltipModule, MatTableModule,
-    NgxDropzoneModule, HttpClientModule, MatInputModule, MatButtonModule, FormsModule, MatExpansionModule
+    NgxDropzoneModule, HttpClientModule, MatInputModule, MatButtonModule, FormsModule, MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [Img2textService, SentimentAnalysisService],
   bootstrap: [AppComponent],
