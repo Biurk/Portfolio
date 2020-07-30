@@ -1,6 +1,8 @@
 <div matTooltip={{tooltip}}>
     <mat-card class=card
-              (click)="goToPage()">
+              (click)="goToPage()"
+              [ngStyle]="{'padding':grayedOut ? '5px' : '0px', 
+               'background-color': grayedOut ? '#999999' : '#ffffff'}">
 
         <mat-card-header class=header>
             <mat-card-title class=title>

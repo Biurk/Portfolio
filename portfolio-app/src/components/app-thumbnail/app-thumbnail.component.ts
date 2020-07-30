@@ -11,10 +11,11 @@ export class AppThumbnailComponent implements OnInit {
   @Input() tooltip: string;
   @Input() imagePath: string;
   @Input() routerPath: string;
+  @Input() grayedOut: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   goToPage(): void {
     this.router.navigate([this.routerPath]);

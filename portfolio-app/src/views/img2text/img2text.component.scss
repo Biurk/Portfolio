@@ -21,12 +21,18 @@
   height: 50%;
   box-sizing: border-box;
 }
+
+.preview{
+  img{
+    max-width: 100% !important;
+  }
+}
 ::shadow .preview {
-  min-width: unset !important;
-  max-width: unset !important;
+//   min-width: unset !important;
+  max-width: 100% !important;
   max-height: 40em;
   width: 100% !important;
-  height: 100% !important;
+  height: 50% !important;
 }
 
 .result {

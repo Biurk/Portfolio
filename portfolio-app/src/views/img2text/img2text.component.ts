@@ -10,15 +10,11 @@ export class Img2textComponent implements OnInit {
   files: File[] = [];
   f: File;
   code: string;
-  isLoading = true;
+  isLoading = false;
 
   constructor(private img2txtService: Img2textService) { }
 
   ngOnInit(): void {
-    this.code = `
-<pre>
-      <code [innerHTML]="code"></code>
-</pre>`;
   }
 
   onSelect(event) {
