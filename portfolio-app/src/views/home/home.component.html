@@ -1,25 +1,34 @@
 <div class="background">
-  <div class="container">
-    <div class="row d-xl-none">
-      <p class="myName">Florent Dravet</p>
-      <p class="myJob"> Data Scientist</p>
+
+  <!-- for small devices : phones/tablets-->
+  <div class="container-small d-xl-none">
+    <div class="row">
+      <p class="myFirstName d-inline">Florent</p>
+      <p class="myLastName d-inline">Dravet</p>
+      <p class="myJob d-inline"> Data Scientist</p>
     </div>
-  </div>
-  <div class="row d-xl-none">
-    <mat-card class="image-card">
-      <div class="image-container"></div>
-    </mat-card>
-  </div>
-  <div class="row d-none d-xl-flex">
-    <div class="col-1"></div>
-    <div class="col-3">
+    <div class="row">
       <mat-card class="image-card">
         <div class="image-container"></div>
       </mat-card>
     </div>
-    <div class="col-8">
-      <p class=myName>Florent Dravet</p>
-      <p class=myJob> Data Scientist</p>
+  </div>
+
+  <!-- for computer screens  -->
+  <div class="container d-none d-xl-block">
+    <div class="row d-none d-xl-flex">
+      <div class="col-1"></div>
+      <div class="col-3">
+        <mat-card class="image-card">
+          <div class="image-container"></div>
+        </mat-card>
+      </div>
+      <div class="col-8">
+        <p class="myFirstName d-inline">Florent </p>
+        <p class="myLastName d-inline"> Dravet</p>
+        <p class=myJob> Data Scientist</p>
+      </div>
     </div>
   </div>
+
 </div>

@@ -15,7 +15,9 @@ export class AppThumbnailComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.grayedOut);
+  }
 
   goToPage(): void {
     this.router.navigate([this.routerPath]);
