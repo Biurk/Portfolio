@@ -1,6 +1,8 @@
 .card {
   cursor: pointer;
+  margin: auto;
   padding: 0px;
+  max-height: 252px;
   .header {
     background-color: #0086C1 !important;
     place-content: center;
@@ -14,7 +16,9 @@
 
   .image {
     width: 100%;
-    height: -webkit-fill-available;
+    max-height: 250px;
+    height:100%;
+    // height: -webkit-fill-available;
   }
 }
 
