@@ -34,7 +34,7 @@ services:
     - portfolio-network
     container_name: tfserv-sentiment
     volumes:
-    - /home/flo/portfolio/api-sentimentAnalysis/sentimentanalysis/model:/models/sentimentAnalysis
+    - ./api-sentimentAnalysis/sentimentanalysis/model:/models/sentimentAnalysis
     
   tfserv-lineCounting:
     image: tensorflow/serving
@@ -47,7 +47,7 @@ services:
     - portfolio-network
     container_name: tfserv-line-counting
     volumes:
-    - /home/flo/portfolio/api-img2txt/models/lineCounting:/models/lineCounting
+    - ./api-img2txt/models/lineCounting:/models/lineCounting
     
   tfserv-charSeg:
     image: tensorflow/serving
@@ -60,7 +60,7 @@ services:
     - portfolio-network
     container_name: tfserv-charSeg
     volumes:
-    - /home/flo/portfolio/api-img2txt/models/charSeg:/models/charSeg
+    - ./api-img2txt/models/charSeg:/models/charSeg
     
   tfserv-charPred:
     image: tensorflow/serving
@@ -73,7 +73,7 @@ services:
     - portfolio-network
     container_name: tfserv-charPred
     volumes:
-    - /home/flo/portfolio/api-img2txt/models/charPred:/models/charPred
+    - ./api-img2txt/models/charPred:/models/charPred
     
   tfserv-wordSeg:
     image: tensorflow/serving
@@ -86,7 +86,7 @@ services:
     - portfolio-network
     container_name: tfserv-wordSeg
     volumes:
-    - /home/flo/portfolio/api-img2txt/models/wordSeg:/models/wordSeg
+    - ./api-img2txt/models/wordSeg:/models/wordSeg
     
   tfserv-spaceSize:
     image: tensorflow/serving
@@ -99,7 +99,7 @@ services:
     - portfolio-network
     container_name: tfserv-spaceSize
     volumes:
-    - /home/flo/portfolio/api-img2txt/models/spaceSize:/models/spaceSize
+    - ./api-img2txt/models/spaceSize:/models/spaceSize
     
 #####################################################
 ###################Front#############################

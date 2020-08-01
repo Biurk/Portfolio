@@ -22,7 +22,7 @@ from TFutils import request2tfserv, decodeCharPred, get_projection, preprocess, 
 
 
 # variables d'env
-prod = False
+prod = True
 lineCountingAdress = 'http://tfserv-line-counting:8501/v1/models/lineCounting:predict'
 charSegAdress = 'http://tfserv-charSeg:8501/v1/models/charSeg:predict'
 charPredAdress = 'http://tfserv-charPred:8501/v1/models/charPred:predict'
