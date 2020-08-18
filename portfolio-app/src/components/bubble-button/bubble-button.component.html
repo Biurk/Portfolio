@@ -1,0 +1,11 @@
+<!-- <div *ngIf="link!=''" class="bubble-container">
+    <img class=icon src={{imagePath}} (click)="goToLink()">
+</div> -->
+
+
+<div class="bubble-container">
+    <a *ngIf="link==''" [href]="emailstring" target="_top">
+        <img class=icon src={{imagePath}} (click)="goToLink()">
+    </a>
+    <img *ngIf="link!=''" class=icon src={{imagePath}} (click)="goToLink()">
+</div>

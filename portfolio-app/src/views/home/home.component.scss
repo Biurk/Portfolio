@@ -3,28 +3,24 @@
   margin-left: 0px;
   margin-right: 0px;
 }
-.background{
-  background-image: url(../../assets/bg.jpg);
-  background-size: cover;
-  height: 70vh;
-}
+
 .myPhoto{
   height:-webkit-fill-available;
   box-shadow: 0 0px 0px 0px rgba(0,0,0,.2);
 }
 .myFirstName{
+  margin-top: 2vh;
   padding-left: 1rem;
   padding-top: 1rem;
-  color: white;
   font-family: abril-fatface, serif;
   font-style: normal;
   font-weight: 800;
   font-size: 5em;
 }
 .myLastName{
+  margin-top: 2vh;
   padding-left: 1rem;
   padding-top: 1rem;
-  color: white;
   font-family: abril-fatface, serif;
   font-style: normal;
   font-weight: 800;
@@ -33,24 +29,18 @@
 .myJob{
   padding-left: 1rem;
   padding-top: 1rem;
-  color: white;
+  // color: white;
   margin-top: 2em;
   font-size: 2em;
   font-weight: 300;
 }
 
 .container{
+  margin-top: 5vh;
   padding-left: 3em;
-  padding-top: 40vh;
-  // margin-right: 5px;
   max-width: inherit;
 }
-.container-small{
-  padding-left: 3em;
-  padding-top: 18vh;
-  // margin-right: 5px;
-  max-width: inherit;
-}
+
 .image-container{
   height: 100%;
   width: 100%;
@@ -70,5 +60,23 @@
   max-height: 40vh;
   padding: 10px;
   padding-bottom: 5vh;
-  margin-left: 5vh;
+  margin-left: 2.5vh;
+}
+
+.text-description{
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.bubblebuttons{
+  margin-left: 30vw;
+  width:40vw;
+  .bubblebuttons-row{
+    margin-top: 2rem;
+  }
+}
+
+.animation-canvas{
+  width: 100%;
+  height: 100%;
 }

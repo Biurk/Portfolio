@@ -24,9 +24,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MyCvComponent } from 'src/views/my-cv/my-cv.component';
 import { MatTableModule } from '@angular/material/table';
 import { MyTableComponent } from 'src/components/my-table/my-table.component';
+import { BubbleButtonComponent } from 'src/components/bubble-button/bubble-button.component';
+import { SkillIconComponent } from 'src/components/skill-icon/skill-icon.component';
+import { DescriptionComponent } from 'src/components/description/description.component';
 import { SourcesComponent } from 'src/views/sources/sources.component';
 import { PortfolioComponent } from 'src/views/portfolio/portfolio.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SidebarModule } from 'ng-sidebar';
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MyTableComponent,
     MyCvComponent,
     SourcesComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    BubbleButtonComponent,
+    SkillIconComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     MatTooltipModule, MatTableModule,
     NgxDropzoneModule, HttpClientModule, MatInputModule, MatButtonModule, FormsModule, MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,SidebarModule.forRoot()
   ],
   providers: [Img2textService, SentimentAnalysisService],
   bootstrap: [AppComponent],

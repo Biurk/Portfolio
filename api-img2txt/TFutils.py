@@ -53,15 +53,13 @@ def rescale(pixels, maxW, maxH):
     height = pixels.shape[0]
     # print('rescale', pixels.shape)
     # on resize si l'image est trop grande on pad si trop petite
-    if width > maxW or height > maxH:
-        ratio = min(maxW/width, maxH/height)
-        newsize = (max(round(width*ratio), 1), max(1, round(height*ratio)))
-        # resize inverse height/width ????
-        im = img.resize(newsize, Image.ANTIALIAS)
-        pixels = np.array(im)
-        # le resize peut introduire des valuers negatives, donc on clip
-        pixels = pixels.clip(0, 255)
-    # print(pixels.shape)
+    ratio = min(maxW/width, maxH/height)
+    newsize = (max(round(width*ratio), 1), max(1, round(height*ratio)))
+    # resize inverse height/width ????
+    im = img.resize(newsize, Image.ANTIALIAS)
+    pixels = np.array(im)
+    # le resize peut introduire des valuers negatives, donc on clip
+    pixels = pixels.clip(0, 255)
     pix = np.zeros((maxH, maxW))
     pix[:pixels.shape[0], :pixels.shape[1]] = pixels
     return pix
@@ -233,3 +231,24 @@ def extractCharsFromWord(word, wordsegPred, maxSize):
             break
     # print('#chars', len(l))
     return l
+
+def char_sanitizer(pix):
+    chars=[]
+    currentChar=[]
+    s=np.sum(pix,0)>2.5*pix.shape[0]
+    i=0
+    for x in s:
+        if x:
+            currentChar.append(pix[:,i])
+        elif not x and len(currentChar)>0:
+            c=np.asarray(currentChar,'float64')
+            c=np.rollaxis(c,1)
+            chars.append(c)
+            currentChar=[]
+        i+=1
+    if len(currentChar)>0:
+        c=np.asarray(currentChar,'float64')
+        c=np.rollaxis(c,1)
+        chars.append(c)
+        currentChar=[]
+    return chars

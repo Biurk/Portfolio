@@ -1,34 +1,103 @@
-<div class="background">
 
-  <!-- for small devices : phones/tablets-->
-  <div class="container-small d-xl-none">
+
+
+<!-- for small devices : phones/tablets-->
+<!-- <div class="container-small d-xl-none">
+  <div class="row">
+    <p class="myFirstName d-inline">Florent</p>
+    <p class="myLastName d-inline">Dravet</p>
+    <p class="myJob d-inline"> Data Scientist</p>
+  </div>
+  <div class="row">
+    <mat-card class="image-card">
+      <div class="image-container"></div>
+    </mat-card>
+  </div>
+</div> -->
+
+<!-- for computer screens  -->
+<div class="background">
+  <div class="container">
     <div class="row">
-      <p class="myFirstName d-inline">Florent</p>
-      <p class="myLastName d-inline">Dravet</p>
-      <p class="myJob d-inline"> Data Scientist</p>
-    </div>
-    <div class="row">
-      <mat-card class="image-card">
-        <div class="image-container"></div>
-      </mat-card>
+      <div class="col-3">
+        <canvas #canvas class="animation-canvas"></canvas>
+        <button (click)="animate()">Play</button> 
+      </div>
+      <div class="col-4">
+        <p class="myFirstName d-inline">Florent </p>
+        <p class="myLastName d-inline"> Dravet</p>
+        <p class=myJob> Data Scientist</p>
+      </div>
+      <div class="col-5">
+        <canvas #canvas2 class="animation-canvas"></canvas>
+        <button (click)="animate()">Play</button> 
+      </div>
     </div>
   </div>
 
-  <!-- for computer screens  -->
-  <div class="container d-none d-xl-block">
-    <div class="row d-none d-xl-flex">
-      <div class="col-1"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+      </div>
       <div class="col-3">
         <mat-card class="image-card">
           <div class="image-container"></div>
         </mat-card>
       </div>
-      <div class="col-8">
-        <p class="myFirstName d-inline">Florent </p>
-        <p class="myLastName d-inline"> Dravet</p>
-        <p class=myJob> Data Scientist</p>
+      <div class="col-3">
+        <div class="text-description">
+          Actuellement en poste d'ingénieur informatique au sein de la société Atos, je désire évoluer dans le métier.
+        
+        Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning. Au sein d'Atos, je fais parti d'un groupe bénévole à caractère académique, s'interessant aux techniques de l'IA. Ainsi, j'ai eu l'opportunité de produire des documents pédagogiques accompagnant la montée en compétence d'autres colaborateurs dans ce domaine.
+        
+        Je suis curieux, autodidacte, ingénieux et pérséverant. J'aime les challenges et le travail en équipe n'est pas une difficulté pour moi, bien au contraire.
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="container bubblebuttons">
+  <div class="row bubblebuttons-row">
+    <div class="col">
+      <app-skill-icon imagePath="../assets/java.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/Angular.svg"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/python.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/tf.svg"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/node.png"></app-skill-icon>
+    </div>
+    
+  </div>
+  <div class="row bubblebuttons-row">
+    <div class="col">
+      <app-skill-icon imagePath="../assets/docker.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/gitskill.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/unity.svg"></app-skill-icon>
+    </div>
+
+  </div>
 
 </div>
+
+
+<app-description imagePath="../../assets/img2txt.png" text="Transforme une image d'un text en text.
+Cette application basée sur le deep learning est née de la frustration provoquée par certain blogs de programmation qui utilisent des screenshots de snippet."
+                          ></app-description>
+
+
+<!-- <app-portfolio></app-portfolio> -->
+
+ 
