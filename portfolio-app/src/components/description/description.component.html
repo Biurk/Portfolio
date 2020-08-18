@@ -1,23 +1,42 @@
-<div *ngIf="!right" class="container">
+<div *ngIf="right; else elseBlock" class="container">
     <div class="row">
-        <div class="col-6">{{text}}
-
+        <div class="col-5">
+            <img class=icon-description src={{imagePath}}>
         </div>
-
-        <div class="col-6">
-            <img class=icon src={{imagePath}}>
+        <div class="col-7">
+            <h3 class=title>
+                {{title}}
+            </h3>
+            <div class=description>
+                {{text}}
+            </div>
+            <div class=buttons>
+                
+                <a class=links (click)="goToLink(sourceLink)">Sources</a>
+                <a class=links [routerLink]="demoLink">Demo</a>
+            </div>
         </div>
     </div>
 </div>
 
-<div *ngIf="right" class="container">
-    <div class="row">
-        <div class="col-6">{{text}}
-
-        </div>
-
-        <div class="col-6">
-            <img class=icon src={{imagePath}}>
+<ng-template #elseBlock>
+    <div  class="container">
+        <div class="row">
+            <div class="col-7">
+                <h3 class=title>
+                    {{title}}
+                </h3>
+                <div class=description>
+                    {{text}}
+                </div>
+                <div class=buttons>
+                    <a class=links>Sources</a>
+                    <a class=links  [routerLink]="demoLink" >Demo</a>
+                </div>
+            </div>
+            <div class="col-5">
+                <img class=icon-description src={{imagePath}}>
+            </div>
         </div>
     </div>
-</div>
+</ng-template>

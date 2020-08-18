@@ -25,6 +25,7 @@ import { MyCvComponent } from 'src/views/my-cv/my-cv.component';
 import { MatTableModule } from '@angular/material/table';
 import { MyTableComponent } from 'src/components/my-table/my-table.component';
 import { BubbleButtonComponent } from 'src/components/bubble-button/bubble-button.component';
+import { BackButtonComponent } from 'src/components/back-button/back-button.component';
 import { SkillIconComponent } from 'src/components/skill-icon/skill-icon.component';
 import { DescriptionComponent } from 'src/components/description/description.component';
 import { SourcesComponent } from 'src/views/sources/sources.component';
@@ -47,7 +48,8 @@ import { SidebarModule } from 'ng-sidebar';
     PortfolioComponent,
     BubbleButtonComponent,
     SkillIconComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -2,3 +2,28 @@
 .container{
     margin-top:5vh ;
 }
+.icon-description{
+    width: 100%;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+
+.description{
+    text-align: justify;
+    margin-top: 4rem;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 2rem;
+}
+.buttons{
+    margin-top: 3rem;
+}
+.links{
+    margin-right: 1rem;
+    font-weight: 700;
+    color: #007f86;
+    cursor: pointer;
+}

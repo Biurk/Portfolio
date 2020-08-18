@@ -151,14 +151,14 @@ charSegPreds = request2tfserv(charSegAdress, scaled_words)
 # print('charSegPreds', np.asarray(charSegPreds).shape)
 
 text = ''
-nChar = 0
+nLine = 0
 scaled_chars = []
 words_structure = []
 for charSegPred in charSegPreds:
     # print('scaled_lines', scaled_lines[nLine].shape)
     # print('wordsegPred', wordsegPred.shape)
     segmented_chars = extractCharsFromWord(
-        scaled_words[nChar], charSegPred, unscaled_words_width[nChar])
+        scaled_words[nLine], charSegPred, unscaled_words_width[nLine])
     # print(len(segmented_chars))
     i = 0
     totChar=0
@@ -167,12 +167,12 @@ for charSegPred in charSegPreds:
         realChars=char_sanitizer(charArray)
         for realChar in realChars:
             scaledChar = rescale(realChar, 32, 32)
-            save(scaledChar, 'debug/chars/char_'+str(nChar)+'_'+str(i))
+            save(scaledChar, 'debug/chars/char_'+str(nLine)+'_'+str(i))
             scaled_chars.append(scaledChar)
             totChar+=1
         i += 1
     words_structure.append(totChar)
-    nChar += 1
+    nLine += 1
 
 # ************************ 6 ******************************************
 # reconstruction de la string a partir des perdictions

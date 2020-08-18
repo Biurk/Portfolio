@@ -31,23 +31,30 @@ export class HomeComponent implements OnInit {
 
 
 export class Point {
-  constructor(private ctx: CanvasRenderingContext2D) {}
+  maxw;
+  maxh;
+  constructor(private ctx: CanvasRenderingContext2D) {
+    this.maxw = this.ctx.canvas.width;
+    this.maxh = this.ctx.canvas.height;
+    this.ctx.strokeStyle = "#415b73";
+  }
 
   draw(x: number, y: number) {
     this.ctx.beginPath();       // Start a new path
     this.ctx.moveTo(0, 0);      // Move the pen to (30, 50)
     this.ctx.lineTo(x, y);    // Move the pen to (30, 50)
-    this.ctx.moveTo(600, 0);      // Move the pen to (30, 50)
+    this.ctx.moveTo(this.maxw, 0);      // Move the pen to (30, 50)
     this.ctx.lineTo(x, y);    // Move the pen to (30, 50)
-    this.ctx.moveTo(0, 300);      // Move the pen to (30, 50)
+    this.ctx.moveTo(0, this.maxh);      // Move the pen to (30, 50)
     this.ctx.lineTo(x, y);    // Move the pen to (30, 50)
-    this.ctx.moveTo(600, 300);      // Move the pen to (30, 50)
+    this.ctx.moveTo(this.maxw, this.maxh);      // Move the pen to (30, 50)
     this.ctx.lineTo(x, y);    // Move the pen to (30, 50)
     this.ctx.stroke();          // Render the path
+
+    //#415b73
   }
   move() {
-    const maxw = this.ctx.canvas.width;
-    const maxh = this.ctx.canvas.height;
+    
     const canvas = this.ctx.canvas;
     let dir=[1,1];
     let pos=[7,13];
@@ -58,19 +65,19 @@ export class Point {
       console.log(pos) 
       this.draw(pos[0], pos[1]);
       x++;
-      if (pos[0] >= maxw) {
+      if (pos[0] >= this.maxw) {
         dir[0]=-1
       }      
       if (pos[0] <= 0) {
         dir[0]=1
       }
-      if (pos[1] >= maxh) {
+      if (pos[1] >= this.maxh) {
         dir[1]=-1
       }
       if (pos[1] <= 0) {
         dir[1]=1
       }
       // clearInterval(i);
-    }, 10);    
+    }, 20);    
   }
 }

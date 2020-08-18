@@ -23,7 +23,4 @@ export class AppComponent {
 
   public _opened: boolean = true;
 
-  emailstring= "mailto:xyz@example.com?Subject=Hello&body=links:  %0D   http://link1.com  %0D http://link1.com";
- 
-
 }

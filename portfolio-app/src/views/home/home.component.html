@@ -21,16 +21,20 @@
     <div class="row">
       <div class="col-3">
         <canvas #canvas class="animation-canvas"></canvas>
-        <button (click)="animate()">Play</button> 
       </div>
       <div class="col-4">
-        <p class="myFirstName d-inline">Florent </p>
-        <p class="myLastName d-inline"> Dravet</p>
+        <p class="myFirstName">Florent Dravet </p>
         <p class=myJob> Data Scientist</p>
+        <h1 class=intro>
+          Vous pouvez voire mon CV en
+          <!-- <a class=resume href="../../../resume.pdf" target="_blank" rel="noopener noreferrer">cliquant ici</a> -->
+          <!-- <a class=resume href="/portfolio-app/src/assets/resume.pdf">cliquant ici</a> -->
+          <a  class=resume href="../../assets/resume.pdf" target="_blank">cliquant ici</a>
+          .   Scrollez plus bas pour essayer les demos de mes projets.
+        </h1>
       </div>
       <div class="col-5">
         <canvas #canvas2 class="animation-canvas"></canvas>
-        <button (click)="animate()">Play</button> 
       </div>
     </div>
   </div>
@@ -44,13 +48,13 @@
           <div class="image-container"></div>
         </mat-card>
       </div>
-      <div class="col-3">
+      <div class="col-5">
         <div class="text-description">
           Actuellement en poste d'ingénieur informatique au sein de la société Atos, je désire évoluer dans le métier.
         
-        Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning. Au sein d'Atos, je fais parti d'un groupe bénévole à caractère académique, s'interessant aux techniques de l'IA. Ainsi, j'ai eu l'opportunité de produire des documents pédagogiques accompagnant la montée en compétence d'autres colaborateurs dans ce domaine.
+        Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning.
         
-        Je suis curieux, autodidacte, ingénieux et pérséverant. J'aime les challenges et le travail en équipe n'est pas une difficulté pour moi, bien au contraire.
+        Je suis curieux, autodidacte, ingénieux et pérséverant.
         </div>
       </div>
     </div>
@@ -60,11 +64,15 @@
 
 <div class="container bubblebuttons">
   <div class="row bubblebuttons-row">
+    <div class="col-3"></div>
     <div class="col">
       <app-skill-icon imagePath="../assets/java.png"></app-skill-icon>
     </div>
     <div class="col">
       <app-skill-icon imagePath="../assets/Angular.svg"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/typescript.png"></app-skill-icon>
     </div>
     <div class="col">
       <app-skill-icon imagePath="../assets/python.png"></app-skill-icon>
@@ -73,13 +81,18 @@
       <app-skill-icon imagePath="../assets/tf.svg"></app-skill-icon>
     </div>
     <div class="col">
-      <app-skill-icon imagePath="../assets/node.png"></app-skill-icon>
+      <app-skill-icon imagePath="../assets/csharp.png"></app-skill-icon>
     </div>
+    <div class="col-3"></div>
     
   </div>
   <div class="row bubblebuttons-row">
+    <div class="col-3"></div>
     <div class="col">
       <app-skill-icon imagePath="../assets/docker.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/node.png"></app-skill-icon>
     </div>
     <div class="col">
       <app-skill-icon imagePath="../assets/gitskill.png"></app-skill-icon>
@@ -87,17 +100,33 @@
     <div class="col">
       <app-skill-icon imagePath="../assets/unity.svg"></app-skill-icon>
     </div>
-
+    <div class="col-3"></div>
   </div>
-
 </div>
 
 
-<app-description imagePath="../../assets/img2txt.png" text="Transforme une image d'un text en text.
-Cette application basée sur le deep learning est née de la frustration provoquée par certain blogs de programmation qui utilisent des screenshots de snippet."
-                          ></app-description>
+<div class="container app-description-container">
+    <div class="row row-description">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <app-description class="app-description" 
+         title="Img2text" [right]="true"  imagePath="../../assets/im2txt.png" 
+         demoLink="/img2text"
+          text="Cette application transforme une image d'un text en text. Elle utilise plusieurs models de Deep Learning"></app-description>
+      </div>
+    </div>
 
+    <div class="row row-description">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <app-description class="app-description" [right]="false"
+        title="Sentiment-Analysis" imagePath="../../assets/sentiment.png" 
+        sourceLink="https://github.com/Biurk/api-sentimentAnalysis/blob/master/sentimentanalysis/sentimentAnalysis.ipynb"
+        demoLink="/sentimentAnalysis"
+        text="Cette application donne un score emotionnel (positif ou négatif) à un text anglais. Elle est basée sur un model de deep learning."></app-description>
+      </div>
+    </div>
 
-<!-- <app-portfolio></app-portfolio> -->
-
+</div>
  
+<!-- <button (click)="animate()">Play</button>  -->
