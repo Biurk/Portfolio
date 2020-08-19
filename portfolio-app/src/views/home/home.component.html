@@ -17,7 +17,7 @@
 
 <!-- for computer screens  -->
 <div class="background">
-  <div class="container">
+  <div class="container d-none d-xl-block">
     <div class="row">
       <div class="col-3">
         <canvas #canvas class="animation-canvas"></canvas>
@@ -26,7 +26,7 @@
         <p class="myFirstName">Florent Dravet </p>
         <p class=myJob> Data Scientist</p>
         <h1 class=intro>
-          Vous pouvez voire mon CV en
+          Vous pouvez voir mon CV en
           <!-- <a class=resume href="../../../resume.pdf" target="_blank" rel="noopener noreferrer">cliquant ici</a> -->
           <!-- <a class=resume href="/portfolio-app/src/assets/resume.pdf">cliquant ici</a> -->
           <a  class=resume href="../../assets/resume.pdf" target="_blank">cliquant ici</a>
@@ -39,30 +39,68 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container d-xl-none">
     <div class="row">
-      <div class="col-3">
+      <div class="col-12">
+        <p class="myFirstName">Florent Dravet </p>
+        <p class=myJob> Data Scientist</p>
+        <h1 class=intro>
+          Vous pouvez voir mon CV en
+          <!-- <a class=resume href="../../../resume.pdf" target="_blank" rel="noopener noreferrer">cliquant ici</a> -->
+          <!-- <a class=resume href="/portfolio-app/src/assets/resume.pdf">cliquant ici</a> -->
+          <a  class=resume href="../../assets/resume.pdf" target="_blank">cliquant ici</a>
+          .   Scrollez plus bas pour essayer les demos de mes projets.
+        </h1>
       </div>
-      <div class="col-3">
-        <mat-card class="image-card">
-          <div class="image-container"></div>
-        </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container d-none d-xl-block photo-container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+      <mat-card class="image-card">
+        <div class="image-container"></div>
+      </mat-card>
+    </div>
+    <div class="col-5">
+      <div class="text-description">
+        Actuellement en poste d'ingénieur informatique au sein de la société Atos, je désire évoluer dans le métier.
+      
+      Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning.
+      
+      Je suis curieux, autodidacte, ingénieux et pérséverant.
       </div>
-      <div class="col-5">
-        <div class="text-description">
-          Actuellement en poste d'ingénieur informatique au sein de la société Atos, je désire évoluer dans le métier.
-        
-        Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning.
-        
-        Je suis curieux, autodidacte, ingénieux et pérséverant.
-        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container d-xl-none photo-container-small">
+  <div class="row">
+    <div class="col-12">
+      <mat-card class="image-card-small">
+        <div class="image-container"></div>
+      </mat-card>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <div class="text-description-small">
+        Actuellement en poste d'ingénieur informatique au sein de la société Atos, je désire évoluer dans le métier.
+      
+      Les mathématiques, les sciences, et l'informatique sont pour moi une véritable passion. Je m'intéresse beaucoup aux nouvelles technologies telles que le Deep learning.
+      
+      Je suis curieux, autodidacte, ingénieux et pérséverant.
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="container bubblebuttons">
+<div class="container d-none d-xl-block bubblebuttons">
   <div class="row bubblebuttons-row">
     <div class="col-3"></div>
     <div class="col">
@@ -105,14 +143,53 @@
 </div>
 
 
-<div class="container app-description-container">
+
+<div class="container d-xl-none bubblebuttons-small">
+  <div class="row bubblebuttons-row">
+    <div class="col">
+      <app-skill-icon imagePath="../assets/java.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/Angular.svg"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/typescript.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/python.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/tf.svg"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/csharp.png"></app-skill-icon>
+    </div>
+  </div>
+  <div class="row bubblebuttons-row">
+    <div class="col">
+      <app-skill-icon imagePath="../assets/docker.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/node.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/gitskill.png"></app-skill-icon>
+    </div>
+    <div class="col">
+      <app-skill-icon imagePath="../assets/unity.svg"></app-skill-icon>
+    </div>
+  </div>
+</div>
+
+
+<div class="container d-none d-xl-block app-description-container">
     <div class="row row-description">
       <div class="col-3"></div>
       <div class="col-6">
         <app-description class="app-description" 
          title="Img2text" [right]="true"  imagePath="../../assets/im2txt.png" 
          demoLink="/img2text"
-          text="Cette application transforme une image d'un text en text. Elle utilise plusieurs models de Deep Learning"></app-description>
+          text="Cette application transforme une image d'un text avec des characters d'imprimerie en text. Elle utilise plusieurs models de Deep Learning"></app-description>
       </div>
     </div>
 
@@ -126,7 +203,27 @@
         text="Cette application donne un score emotionnel (positif ou négatif) à un text anglais. Elle est basée sur un model de deep learning."></app-description>
       </div>
     </div>
+</div>
 
+<div class="container d-xl-none app-description-container-small">
+  <div class="row row-description">
+    <div class="col-12">
+      <app-description class="app-description" 
+       title="Img2text" [right]="true"  imagePath="../../assets/im2txt.png" 
+       demoLink="/img2text"
+        text="Cette application transforme une image d'un text avec des characters d'imprimerie en text. Elle utilise plusieurs models de Deep Learning"></app-description>
+    </div>
+  </div>
+
+  <div class="row row-description">
+    <div class="col-12">
+      <app-description class="app-description" [right]="false"
+      title="Sentiment-Analysis" imagePath="../../assets/sentiment.png" 
+      sourceLink="https://github.com/Biurk/api-sentimentAnalysis/blob/master/sentimentanalysis/sentimentAnalysis.ipynb"
+      demoLink="/sentimentAnalysis"
+      text="Cette application donne un score emotionnel (positif ou négatif) à un text anglais. Elle est basée sur un model de deep learning."></app-description>
+    </div>
+  </div>
 </div>
  
 <!-- <button (click)="animate()">Play</button>  -->

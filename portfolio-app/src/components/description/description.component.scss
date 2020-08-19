@@ -1,9 +1,13 @@
 
 .container{
     margin-top:5vh ;
+    .row{
+        justify-content: center;
+    }
 }
 .icon-description{
     width: 100%;
+    max-width: 30rem;
     cursor: pointer;
     border-radius: 30px;
 }
@@ -15,6 +19,15 @@
 }
 
 .title{
+    font-weight: 500;
+    font-size: 2rem;
+}
+.description-small{
+    text-align: justify;
+    margin-top: 1rem;
+}
+
+.title-small{
     font-weight: 500;
     font-size: 2rem;
 }

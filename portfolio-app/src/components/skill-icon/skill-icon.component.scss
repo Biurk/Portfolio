@@ -2,8 +2,20 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 6em;
-    height: 6em;
+    width: 6rem;
+    height: 6rem;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+     -ms-filter: grayscale(100%);
+         filter: grayscale(100%);
+  }
+.imageSkill-small{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12vw;
+    height: 12vw;
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
       -o-filter: grayscale(100%);
@@ -12,6 +24,13 @@
   }
 
 .imageSkill:hover{
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+      -o-filter: grayscale(0%);
+     -ms-filter: grayscale(0%);
+         filter: grayscale(0%);
+  }
+.imageSkill-small:hover{
     -webkit-filter: grayscale(0%);
     -moz-filter: grayscale(0%);
       -o-filter: grayscale(0%);
