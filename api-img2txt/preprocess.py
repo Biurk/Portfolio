@@ -24,7 +24,7 @@ from TFutils import request2tfserv, decodeCharPred, get_projection, preprocess, 
 
 
 # variables d'env
-prod = False
+prod = True
 
 
 lineCountingAdress = 'http://tfserv-line-counting:8501/v1/models/lineCounting:predict'
