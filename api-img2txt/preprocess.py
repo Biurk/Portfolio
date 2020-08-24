@@ -6,6 +6,8 @@ import re
 from io import BytesIO
 import base64
 import json
+import os
+import time
 
 from TFutils import request2tfserv, decodeCharPred, get_projection, preprocess, save, rescale, \
     full_segmentation_process, extractWordsFromLine, extractCharsFromWord,char_sanitizer
@@ -22,7 +24,7 @@ from TFutils import request2tfserv, decodeCharPred, get_projection, preprocess, 
 
 
 # variables d'env
-prod = True
+prod = False
 
 
 lineCountingAdress = 'http://tfserv-line-counting:8501/v1/models/lineCounting:predict'
@@ -71,23 +73,29 @@ segmented_lines = full_segmentation_process(
     pixArray, get_projection(pixArray), line_pred)
 
 # ************************ 4 ************************************
-# Segmentation des lignes en mots et espaces grace au model wordSeg
-# input format h x w
+# Recuperation du text grace a tesseract
 # **************************************************************
+text_lines=[]
+i=0
+for line in segmented_lines:
+    save(line, './l')
+    os.system("tesseract ./l.png output -l eng")
+    with open("output.txt", 'r',encoding='utf-8') as file:
+         text_lines.append(file.read().strip())
+    i+=1
 
 
-# rescale 35x1000
+# # rescale 35x1000
 scaled_lines = []
 for line in segmented_lines:
     # print('line', line.shape)
     scaled_lines.append(np.expand_dims(rescale(line, 1000, 35), 2))
 
 scaled_lines = np.asarray(scaled_lines, dtype='float64')
-i = 0
-for scaled_line in scaled_lines:
-    # save(scaled_line, 'debug/lines/debug_line_'+str(i))
-    i += 1
-# scaled_lines = np.swapaxes(scaled_lines, 1, 2)  # (#lines, 1000, 35, 1)
+# i = 0
+# for scaled_line in scaled_lines:
+#     # save(scaled_line, 'debug/lines/debug_line_'+str(i))
+#     i += 1
 
 # print('scaled_lines', scaled_lines.shape)
 
@@ -104,120 +112,133 @@ structure = []
 nLine = 0
 space_mes = 0
 space_tot = 0
+# print(len(wordSegPreds))
 for wordSegPred in wordSegPreds:
     segmented_words, b = extractWordsFromLine(scaled_lines[nLine], wordSegPred)
     structure.append([len(segmented_words), b])
     i = 0
+    flag=True
+    # print('nLine '+str(nLine))
+    if len(segmented_words)==0:
+        space_words.append(np.zeros((0,0)))
     for wordArray in segmented_words:
-        if b:
-            space_words.append(wordArray)
+        if b and flag:
+            flag=False
+            # print('append '+str(nLine))
             if i == 0:
+                space_words.append(wordArray)
+            else:
+                space_words.append(np.zeros((0,0)))
                 space_mes += wordArray.shape[1]
                 space_tot += 1
-        else:
-            unscaled_words_width.append(wordArray.shape[1])
-            w = rescale(wordArray, 1000, 35)
-            # save(w, 'debug/words/word_'+str(nLine)+'_'+str(i))
-            scaled_words.append(w)
+        # else:
+        #     unscaled_words_width.append(wordArray.shape[1])
+        #     w = rescale(wordArray, 1000, 35)
+        #     # save(w, 'debug/words/word_'+str(nLine)+'_'+str(i))
+        #     scaled_words.append(w)
         b = not b
         i += 1
     nLine += 1
 
-# print('unscaled_words_width', unscaled_words_width)
-# ************************ 5 ******************************************
-# prediction de la taille d'un espace en pixel et transformation des space_words en string
-# **********************************************************************
+# # print('unscaled_words_width', unscaled_words_width)
+# # ************************ 5 ******************************************
+# # prediction de la taille d'un espace en pixel et transformation des space_words en string
+# # **********************************************************************
 
-spaceSizePreds = request2tfserv(spaceSizeAdress, scaled_lines)
+spaceSizePreds = request2tfserv(spaceSizeAdress, scaled_lines,False)
 spaceSizePred = np.mean(spaceSizePreds)
 space_mes += spaceSizePred
 space_tot += 1
-
 spaceSize = round(space_mes/space_tot)
 string_space_words = list(
     map(lambda a: ' '*int(round(a.shape[1]/spaceSize)), space_words))
 
 # print(string_space_words)
+# print(len(segmented_lines))
+# print(len(string_space_words))
+# print(len(text_lines))
+for i in range(len(segmented_lines)):
+    print(string_space_words[i]+text_lines[i])
 
 
-# ************************ 6 ******************************************
-# segmentation en char des (non space) words
-# **********************************************************************
+# # ************************ 6 ******************************************
+# # segmentation en char des (non space) words
+# # **********************************************************************
 
-scaled_words = np.expand_dims(np.asarray(scaled_words), 3)
-# print('scaled_words', scaled_words.shape)
-charSegPreds = request2tfserv(charSegAdress, scaled_words)
+# scaled_words = np.expand_dims(np.asarray(scaled_words), 3)
+# # print('scaled_words', scaled_words.shape)
+# charSegPreds = request2tfserv(charSegAdress, scaled_words)
 
-# print('charSegPreds', np.asarray(charSegPreds).shape)
+# # print('charSegPreds', np.asarray(charSegPreds).shape)
 
-text = ''
-nChar = 0
-scaled_chars = []
-words_structure = []
-for charSegPred in charSegPreds:
-    # print('scaled_lines', scaled_lines[nLine].shape)
-    # print('wordsegPred', wordsegPred.shape)
-    segmented_chars = extractCharsFromWord(
-        scaled_words[nChar], charSegPred, unscaled_words_width[nChar])
-    # print(len(segmented_chars))
-    i = 0
-    totChar=0
-    for charArray in segmented_chars:
-        # print('charArray.shape', charArray.shape)
-        realChars=char_sanitizer(charArray)
-        for realChar in realChars:
-            scaledChar = rescale(realChar, 32, 32)
-            save(scaledChar, 'debug/chars/char_'+str(nChar)+'_'+str(i))
-            scaled_chars.append(scaledChar)
-            totChar+=1
-        i += 1
-    words_structure.append(totChar)
-    nChar += 1
+# text = ''
+# nChar = 0
+# scaled_chars = []
+# words_structure = []
+# for charSegPred in charSegPreds:
+#     # print('scaled_lines', scaled_lines[nLine].shape)
+#     # print('wordsegPred', wordsegPred.shape)
+#     segmented_chars = extractCharsFromWord(
+#         scaled_words[nChar], charSegPred, unscaled_words_width[nChar])
+#     # print(len(segmented_chars))
+#     i = 0
+#     totChar=0
+#     for charArray in segmented_chars:
+#         # print('charArray.shape', charArray.shape)
+#         realChars=char_sanitizer(charArray)
+#         for realChar in realChars:
+#             scaledChar = rescale(realChar, 32, 32)
+#             save(scaledChar, 'debug/chars/char_'+str(nChar)+'_'+str(i))
+#             scaled_chars.append(scaledChar)
+#             totChar+=1
+#         i += 1
+#     words_structure.append(totChar)
+#     nChar += 1
 
-# ************************ 6 ******************************************
-# reconstruction de la string a partir des perdictions
-# **********************************************************************
+# # ************************ 6 ******************************************
+# # reconstruction de la string a partir des perdictions
+# # **********************************************************************
 
-charPreds = request2tfserv(charPredAdress, np.expand_dims(
-    np.asarray(scaled_chars), 3))
-decoded_preds = decodeCharPred(charPreds)
+# charPreds = request2tfserv(charPredAdress, np.expand_dims(
+#     np.asarray(scaled_chars), 3))
+# decoded_preds = decodeCharPred(charPreds)
 
-words = []
-tot = 0
-for struct in words_structure:
-    word = ''.join(decoded_preds[tot:tot+struct])
-    words.append(word)
-    tot += struct
+# words = []
+# tot = 0
+# for struct in words_structure:
+#     word = ''.join(decoded_preds[tot:tot+struct])
+#     words.append(word)
+#     tot += struct
 
-s = ''
-space_index = 0
-word_index = 0
-i = 0
-# print(structure)
-for struct in structure:
-    if struct[1]:  # space first
-        j = 0
-        # print(space_index, len(string_space_words), struct)
-        while j < struct[0]:
-            s += string_space_words[space_index]
-            space_index += 1
-            j += 1
-            if j == struct[0]:
-                break
-            s += words[word_index]
-            word_index += 1
-            j += 1
-    else:
-        j = 0
-        while j < struct[0]:
-            s += words[word_index]
-            word_index += 1
-            j += 1
-            if j == struct[0]:
-                break
-            s += string_space_words[space_index]
-            space_index += 1
-            j += 1
-    s += '\n'
-    tot += struct[0]
-print(s)
+# s = ''
+# space_index = 0
+# word_index = 0
+# i = 0
+# # print(structure)
+# for struct in structure:
+#     if struct[1]:  # space first
+#         j = 0
+#         # print(space_index, len(string_space_words), struct)
+#         while j < struct[0]:
+#             s += string_space_words[space_index]
+#             space_index += 1
+#             j += 1
+#             if j == struct[0]:
+#                 break
+#             s += words[word_index]
+#             word_index += 1
+#             j += 1
+#     else:
+#         j = 0
+#         while j < struct[0]:
+#             s += words[word_index]
+#             word_index += 1
+#             j += 1
+#             if j == struct[0]:
+#                 break
+#             s += string_space_words[space_index]
+#             space_index += 1
+#             j += 1
+#     s += '\n'
+#     tot += struct[0]
+# print(s)

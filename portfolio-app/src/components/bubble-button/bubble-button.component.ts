@@ -9,7 +9,7 @@ export class BubbleButtonComponent implements OnInit {
 
   @Input() link: string='';
   @Input() imagePath:string;
-  public emailstring= "mailto:florent.dravet@gmail.com?Subject=Hello&body=links:  %0D   http://link1.com  %0D http://link1.com";
+  public emailstring= "mailto:florent.dravet@gmail.com?Subject=Hello";
 
   constructor() { }
 

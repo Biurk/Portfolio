@@ -92,9 +92,9 @@ def preprocess(img):
 def save(pix, name):
     # print(pix.shape)
     if len(pix.shape) > 2:
-        Image.fromarray(pix.squeeze(2)).convert('RGB').save(name+'.png')
+        Image.fromarray(pix.squeeze(2)).convert('RGB').save(name+'.png',dpi=(300, 300))
     else:
-        Image.fromarray(pix).convert('RGB').save(name+'.png')
+        Image.fromarray(pix).convert('RGB').save(name+'.png',dpi=(300, 300))
 
 
 def get_projection(pixArray):

@@ -16,9 +16,12 @@ services:
     build: ./api-img2txt
     expose:
     - "4000"
+    # network_mode: host
     networks:
     - portfolio-network
     container_name: api-img2txt
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
 #####################################################
 ###################Models############################
 #####################################################
@@ -49,31 +52,31 @@ services:
     volumes:
     - ./api-img2txt/models/lineCounting:/models/lineCounting
     
-  tfserv-charSeg:
-    image: tensorflow/serving
-    environment:
-    - MODEL_NAME=charSeg
-    ports:
-    - "8300:8500"
-    - "8301:8501"
-    networks:
-    - portfolio-network
-    container_name: tfserv-charSeg
-    volumes:
-    - ./api-img2txt/models/charSeg:/models/charSeg
+  # tfserv-charSeg:
+  #   image: tensorflow/serving
+  #   environment:
+  #   - MODEL_NAME=charSeg
+  #   ports:
+  #   - "8300:8500"
+  #   - "8301:8501"
+  #   networks:
+  #   - portfolio-network
+  #   container_name: tfserv-charSeg
+  #   volumes:
+  #   - ./api-img2txt/models/charSeg:/models/charSeg
     
-  tfserv-charPred:
-    image: tensorflow/serving
-    environment:
-    - MODEL_NAME=charPred
-    ports:
-    - "8200:8500"
-    - "8201:8501"
-    networks:
-    - portfolio-network
-    container_name: tfserv-charPred
-    volumes:
-    - ./api-img2txt/models/charPred:/models/charPred
+  # tfserv-charPred:
+  #   image: tensorflow/serving
+  #   environment:
+  #   - MODEL_NAME=charPred
+  #   ports:
+  #   - "8200:8500"
+  #   - "8201:8501"
+  #   networks:
+  #   - portfolio-network
+  #   container_name: tfserv-charPred
+  #   volumes:
+  #   - ./api-img2txt/models/charPred:/models/charPred
     
   tfserv-wordSeg:
     image: tensorflow/serving

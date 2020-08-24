@@ -7,6 +7,7 @@ import fs from 'fs';
 
 const app = express();
 const port = 4000;
+process.env.PYTHONIOENCODING='UTF8';
 
 app.use(bodyParser.json(
     { limit: '50mb' }
