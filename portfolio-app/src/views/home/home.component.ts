@@ -11,11 +11,11 @@ export class HomeComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;  
   @ViewChild('canvas2', { static: true }) canvas2: ElementRef<HTMLCanvasElement>;  
 
-  public im2txtString:string=`Cette application transforme une image d'un text avec des characters d'imprimerie en text.
-  Elle utilise plusieurs models de Deep Learning et Tesseract. Elle est capable de prendre en compte les indentations d'un bout de code.
+  public im2txtString:string=`Cette application transforme une image d'un text avec des caractères d'imprimerie en text.
+  Elle utilise plusieurs modèles de Deep Learning et Tesseract. Elle est capable de prendre en compte les indentations d'un bout de code.
   `
-  public sentimentString:string=`"Cette application donne un score emotionnel (positif ou négatif) à un text anglais.
-   Elle est basée sur un model de deep learning."
+  public sentimentString:string=`"Cette application donne un score émotionnel (positif ou négatif) à un text anglais.
+   Elle est basée sur un modèle de deep learning."
   `
   constructor() {}
   
