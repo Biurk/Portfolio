@@ -1,7 +1,7 @@
 <div *ngIf="right; else elseBlock" class="container d-none d-xl-block">
     <div class="row">
         <div class="col-5">
-            <img class=icon-description src={{imagePath}}>
+            <img class=icon-description src={{imagePath}} (click)="goToLink(demoLink)">
         </div>
         <div class="col-7">
             <h3 class=title>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-5">
-                <img class=icon-description src={{imagePath}}>
+                <img class=icon-description src={{imagePath}} (click)="goToLink(demoLink)">
             </div>
         </div>
     </div>
@@ -57,6 +57,6 @@
         </div>
     </div>
     <div class="row">
-        <img class=icon-description src={{imagePath}}>
+        <img class=icon-description src={{imagePath}} (click)="goToLink(demoLink)">
     </div>
 </div>
